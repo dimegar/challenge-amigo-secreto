@@ -2,3 +2,16 @@
 // Creando el array para almacenar los nombres.
 let amigos = [];
 
+//Interacción con añadir
+function agregarAmigo(){
+    let amigoIngresado = document.getElementById('amigo').value;
+    amigos.push(amigoIngresado);
+    console.log(amigos);
+    limpiarCaja();
+
+}
+
+//Limpiar caja
+function limpiarCaja(){
+    document.querySelector('#amigo').value ='';
+}
