@@ -1,7 +1,8 @@
 // El principal objetivo de este desafío es fortalecer tus habilidades en lógica de programación. Aquí deberás desarrollar la lógica para resolver el problema.
 // Creando el array para almacenar los nombres.
 let amigos = [];
-let numeroDeAmigos = 0;
+let numeroDeAmigos = [];
+let amigosMinimos = 2;
 //Construcción de lista de amigos
 function listaAmigos(elemento,lista){
     let elementoHTML = document.querySelector(elemento);
@@ -17,6 +18,11 @@ function listaAmigos(elemento,lista){
 function mostrarAmigos(){
     listaAmigos("#listaAmigos",amigos);
 }
+// Ganador
+function resultadoGanador(elemento,texto){
+    let elementoHTML = document.querySelector(elemento);
+    elementoHTML.innerHTML = texto;
+}
 //Limpiar caja
 function limpiarCaja(){
     document.querySelector('#amigo').value ='';
@@ -30,23 +36,20 @@ function agregarAmigo(){
     }
     else{
     amigos.push(amigoIngresado);
+    numeroDeAmigos.push(amigos.length);
     mostrarAmigos();
     limpiarCaja();
-    console.log(amigos);
-    console.log(numeroDeAmigos);
     }    
 }
 
 //Interacción con sortear 
 function sortearAmigo(){
-    if (amigos == ''){
-    alert("Ingrese al menos dos nombres para iniciar el sorteo.");
-    }
-    else if(amigos.length == 1){
-        alert("Ingresa otro nombre para iniciar el sorte.");
+    let identificadorAmigo = Math.floor(Math.random()*numeroDeAmigos.length);
+    if(numeroDeAmigos.length >= amigosMinimos){
+        resultadoGanador("#resultado",`La persona ganadora es: ${amigos[identificadorAmigo]}!`);
     }
     else{
-        
+        alert("Ingresa al menos dos amigos.");
     }
 }
 
